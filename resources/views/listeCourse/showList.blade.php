@@ -60,6 +60,9 @@
     }
     setList()
 
+    setInterval(() => {
+      setList()
+    }, 2500)
 
     $('[name="name"]').on('keyup', (e) => {
       if (e.which == 13) {
