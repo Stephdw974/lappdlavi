@@ -24,7 +24,7 @@
 <div class="fixed-bottom border-top py-2 bg-white">
   <div class="container">
 
-    <input type="text" class="form-control rounded-0" name="name" placeholder="Créer une nouvelle liste..">
+    <input type="text" class="form-control rounded-0" name="name" placeholder="Créer une nouvelle liste.." autocomplete="off">
 
   </div>
 </div>

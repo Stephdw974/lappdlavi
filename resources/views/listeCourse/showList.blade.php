@@ -23,7 +23,7 @@
 
 <div class="fixed-bottom border-top py-2 bg-white">
   <div class="container">
-    <input type="text" class="form-control rounded-0" name="name" placeholder="Ajouter un article...">
+    <input type="text" class="form-control rounded-0" name="name" placeholder="Ajouter un article..." autocomplete="off">
   </div>
 </div>
 
