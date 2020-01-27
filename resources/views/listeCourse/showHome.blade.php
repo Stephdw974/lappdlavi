@@ -98,6 +98,7 @@
     border: 1px solid #bababa;
     border-radius: 5px;
     background: rgb(254, 254, 254);
+    color: rgb(75, 75, 75) !important;
   }
 
   #listeCourse div {
