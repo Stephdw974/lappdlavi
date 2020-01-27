@@ -49,7 +49,7 @@
             $('#listeCourse').prepend('<div list="' + data[i].id + '" action="joinList" class="' + data[i].id + '">' + data[i].name + '</div>')
           })
         })
-      } else if(privacy === 'private') {
+      } else if (privacy === 'private') {
         $('#appname').text('Listes de course privées')
         LC.getUserLists((data) => {
           console.log(data)
@@ -67,6 +67,7 @@
     $('[name="name"]').on('keyup', (e) => {
       if (e.which == 13) {
         LC.createList(() => {
+          $('[name="name"]').val('')
           setList('public')
         })
       }

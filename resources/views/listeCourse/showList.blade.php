@@ -45,11 +45,10 @@
         console.log(data)
 
 
+        $('#appname').text(data['list'].name)
         if (data['list'].is_private == 1) {
-          $('#appname').text('Liste privée "' + data['list'].name + '"')
           $('[action="lockList"]').html('<i class="fas fa-lock-open"></i>')
         } else {
-          $('#appname').text('Liste publique "' + data['list'].name + '"')
           $('[action="lockList"]').html('<i class="fas fa-lock"></i>')
         }
 
@@ -65,6 +64,7 @@
     $('[name="name"]').on('keyup', (e) => {
       if (e.which == 13) {
         LC.createArticle(LC_ID, () => {
+          $('[name="name"]').val('')
           setList()
         })
       }
