@@ -17,7 +17,7 @@
 
 <div class="container">
 
-  <div id="listeCourse"></div>
+  <div id="listeCourse" class="text-dark"></div>
 
 </div>
 
