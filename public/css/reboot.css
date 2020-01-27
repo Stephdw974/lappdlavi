@@ -1,0 +1,18 @@
+#app {
+    margin: 56px 0 56px 0;
+}
+
+.bg-rb {
+    background-color: #dedede;
+    color: #fefefe;
+}
+
+.btn-rb {
+    background-color: #dedede;
+    color: #fefefe;
+}
+
+.btn-rb:hover {
+    background-color: #dedede;
+    color: #fefefe;
+}
