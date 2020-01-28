@@ -23,3 +23,14 @@
     </form>
 </div>
 @endsection
+
+@section('js')
+<script>
+    $(window).on('resize', function() {
+        $('#appname').text(window.innerHeight)
+    })
+    // setInterval(() => {
+    //     $('#appname').text(window.innerHeight)
+    // }, 1000)
+</script>
+@endsection

@@ -10,6 +10,7 @@
     </a>
   </div>
   <div class="btn-group float-right">
+    <a href="#" id="Height" class="btn btn-dark"></a>
     <a href="#" action="showPublicList" class="btn btn-dark"><i class="fas fa-users"></i></a>
     <a href="#" action="showPrivateList" class="btn btn-dark"><i class="fas fa-user"></i></a>
   </div>
@@ -36,6 +37,7 @@
 <script src="{{ asset('js/listeCourse.js') }}"></script>
 <script>
   window.onload = () => {
+
 
     var LC = new listeCourse('{{ csrf_token() }}')
 
