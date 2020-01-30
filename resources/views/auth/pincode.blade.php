@@ -9,7 +9,7 @@
 <form action="{{ route('pincode.authUser') }} " method="post">
   @csrf
 <div class="form-group mb-5 pb-5">
-  <input type="text" class="form-control form-control-lg rounded-0 text-center text-sm-left" autofocus name="pincode" id="pincode">
+  <input type="tel" class="form-control form-control-lg rounded-0 text-center text-sm-left" autofocus name="pincode" id="pincode">
 </div>
 </form>
 

@@ -22,10 +22,10 @@ class LappdlaviController extends Controller
 
         if($pincode == '1218') {
             $u = User::find(2);
-            Auth::login($u, true);
+            Auth::login($u);
         } else if($pincode == '0412'){
             $u = User::find(1);
-            Auth::login($u, true);
+            Auth::login($u);
         }
 
         return redirect()->route('listes.showHome');
