@@ -9,7 +9,7 @@
 <form action="{{ route('pincode.authUser') }} " method="post">
   @csrf
 <div class="form-group mb-5 pb-5">
-  <input type="tel" class="form-control form-control-lg rounded-0 text-center text-sm-left" autofocus name="pincode" id="pincode">
+  <input id="pincode" type="tel" class="form-control form-control-lg rounded-0 text-center text-sm-left" autofocus name="pincode" id="pincode">
 </div>
 </form>
 
@@ -19,6 +19,22 @@
 
 
 @section('js')
+<script>
+
+// window.onload = () => {
+$('#pincode').on('keyup', function() {
+  if($(this).val().length == 4){
+    $.post('/pincode', { _token: "{{ csrf_token() }}", pincode: $(this).val() })
+    .done(data => {
+      if(data) {
+        window.location.href ='/listes';
+      }
+    })
+  } 
+})
+// }
+
+</script>
 
 @endsection
 
