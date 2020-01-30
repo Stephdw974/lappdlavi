@@ -18,7 +18,7 @@
 
 <div class="container">
 
-  <div id="listeCourse" class="text-dark"></div>
+  <div id="listes" class="text-dark"></div>
 
 </div>
 
@@ -34,30 +34,30 @@
 
 
 @section('js')
-<script src="{{ asset('js/listeCourse.js') }}"></script>
+<script src="{{ asset('js/listes.js') }}"></script>
 <script>
   window.onload = () => {
 
 
-    var LC = new listeCourse('{{ csrf_token() }}')
+    var LC = new listes('{{ csrf_token() }}')
 
     const setList = (privacy) => {
       if (privacy === 'public') {
-        $('#appname').text('Listes de course partagées')
+        $('#appname').text('Listes partagées')
         LC.getPublicLists((data) => {
           console.log(data)
-          $('#listeCourse').html(null)
+          $('#listes').html(null)
           Object.keys(data).forEach(i => {
-            $('#listeCourse').prepend('<div list="' + data[i].id + '" action="joinList" class="' + data[i].id + '">' + data[i].name + '</div>')
+            $('#listes').prepend('<div list="' + data[i].id + '" action="joinList" class="' + data[i].id + '">' + data[i].name + '</div>')
           })
         })
       } else if (privacy === 'private') {
-        $('#appname').text('Listes de course privées')
+        $('#appname').text('Listes personnelles')
         LC.getUserLists((data) => {
           console.log(data)
-          $('#listeCourse').html(null)
+          $('#listes').html(null)
           Object.keys(data).forEach(i => {
-            $('#listeCourse').prepend('<div list="' + data[i].id + '" action="joinList" class="' + data[i].id + '">' + data[i].name + '</div>')
+            $('#listes').prepend('<div list="' + data[i].id + '" action="joinList" class="' + data[i].id + '">' + data[i].name + '</div>')
           })
         })
       }
@@ -76,7 +76,7 @@
     })
     $('body').on('click', '[action="joinList"]', function(e) {
       e.preventDefault()
-      $(location).attr('href', '/listeCourse/' + $(this).attr('list'))
+      $(location).attr('href', '/listes/' + $(this).attr('list'))
     })
     $('body').on('click', '[action="showPublicList"]', function(e) {
       e.preventDefault()
@@ -96,14 +96,14 @@
 @section('css')
 
 <style>
-  #listeCourse {
+  #listes {
     border: 1px solid #bababa;
     border-radius: 5px;
     background: rgb(254, 254, 254);
     color: rgb(75, 75, 75) !important;
   }
 
-  #listeCourse div {
+  #listes div {
     border-bottom: 1px solid #bababa;
     cursor: pointer;
     text-align: justify;
@@ -112,11 +112,11 @@
     padding: 8px 16px 8px 16px;
   }
 
-  #listeCourse div:last-child {
+  #listes div:last-child {
     border-bottom: none;
   }
 
-  #listeCourse div:hover {
+  #listes div:hover {
     background: rgb(240, 240, 240);
   }
 </style>

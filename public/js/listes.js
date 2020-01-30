@@ -1,11 +1,11 @@
 
 
-class listeCourse {
+class listes {
 
   constructor(CSRF_Token) {
     this.CSRF_Token = CSRF_Token
-    console.info('» listeCourse()')
-    console.info('» listeCourse() » CSRF_Token : ' + CSRF_Token)
+    console.info('» listes()')
+    console.info('» listes() » CSRF_Token : ' + CSRF_Token)
   }
 
 
@@ -14,10 +14,10 @@ class listeCourse {
   /**
    * Retourne toutes les listes publiques
    *
-   * @memberof listeCourse
+   * @memberof listes
    */
   getPublicLists(callback) {
-    $.get('/listeCourse/lists/public')
+    $.get('/listes/lists/public')
       .done((data) => { callback(JSON.parse(data)) })
       .fail((data) => { console.log(data) })
   }
@@ -28,10 +28,10 @@ class listeCourse {
   /**
  * Retourne toutes les listes privées de l'utilisateur connecté (Traitement en back)
  *
- * @memberof listeCourse
+ * @memberof listes
  */
   getPrivateLists(callback) {
-    $.get('/listeCourse/lists/private')
+    $.get('/listes/lists/private')
       .done(data => { callback(JSON.parse(data)) })
       .fail(data => { console.log(data) })
   }
@@ -42,10 +42,10 @@ class listeCourse {
   /**
  * Retourne toutes les listes de l'utilisateur connecté (Traitement en back)
  *
- * @memberof listeCourse
+ * @memberof listes
  */
   getUserLists(callback) {
-    $.get('/listeCourse/lists/user')
+    $.get('/listes/lists/user')
       .done(data => { callback(JSON.parse(data)) })
       .fail(data => { console.log(data) })
   }
@@ -55,11 +55,11 @@ class listeCourse {
   /**
    * Retourne la liste correspondant à l'ID en parametre
    *
-   * @memberof listeCourse
+   * @memberof listes
    */
 
   getList(List_ID, callback) {
-    $.get('/listeCourse/list/' + List_ID)
+    $.get('/listes/list/' + List_ID)
       .done(data => { callback(JSON.parse(data)) })
       .fail(data => { console.log(data) })
   }
@@ -68,7 +68,7 @@ class listeCourse {
 
 
   createList(callback) {
-    $.post('/listeCourse/list/create', { _token: this.CSRF_Token, name: $('[name="name"]').val() })
+    $.post('/listes/list/create', { _token: this.CSRF_Token, name: $('[name="name"]').val() })
       .done(() => { callback() })
       .fail(data => { console.log(data) })
   }
@@ -77,7 +77,7 @@ class listeCourse {
 
 
   deleteList(List_ID, callback) {
-    $.post('/listeCourse/list/delete/' + List_ID, { _token: this.CSRF_Token })
+    $.post('/listes/list/delete/' + List_ID, { _token: this.CSRF_Token })
       .done(() => { callback() })
       .fail(data => { console.log(data) })
   }
@@ -86,7 +86,7 @@ class listeCourse {
 
 
   toggleListPrivacy(List_ID, callback) {
-    $.post('/listeCourse/list/togglePrivacy/' + List_ID, { _token: this.CSRF_Token })
+    $.post('/listes/list/togglePrivacy/' + List_ID, { _token: this.CSRF_Token })
       .done(() => { callback() })
       .fail(data => { console.log(data) })
   }
@@ -95,7 +95,7 @@ class listeCourse {
 
 
   createArticle(List_ID, callback) {
-    $.post('/listeCourse/list/' + List_ID + '/createArticle', { _token: this.CSRF_Token, name: $('[name="name"]').val() })
+    $.post('/listes/list/' + List_ID + '/createArticle', { _token: this.CSRF_Token, name: $('[name="name"]').val() })
       .done(() => { callback() })
       .fail(data => { console.log(data) })
   }
@@ -104,7 +104,7 @@ class listeCourse {
 
 
   deleteArticle(Article_ID, callback) {
-    $.post('/listeCourse/article/delete/' + Article_ID, { _token: this.CSRF_Token })
+    $.post('/listes/article/delete/' + Article_ID, { _token: this.CSRF_Token })
       .done(() => { callback() })
       .fail(data => { console.log(data) })
   }
@@ -113,7 +113,7 @@ class listeCourse {
 
 
   toggleArticleState(Article_ID, callback) {
-    $.post('/listeCourse/article/toggleState/' + Article_ID, { _token: this.CSRF_Token, name: $('[name="name"]').val() })
+    $.post('/listes/article/toggleState/' + Article_ID, { _token: this.CSRF_Token, name: $('[name="name"]').val() })
       .done(() => { callback() })
       .fail(data => { console.log(data) })
   }

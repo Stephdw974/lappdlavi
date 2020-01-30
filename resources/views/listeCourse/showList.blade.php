@@ -17,13 +17,13 @@
 </div>
 <div class="container">
   <b id="deletionMode" style="display:none">Mode suppression activé</b>
-  <div id="listeCourse"></div>
+  <div id="listes"></div>
 
 </div>
 
 <div class="fixed-bottom border-top py-2 bg-white">
   <div class="container">
-    <input type="text" class="form-control rounded-0" name="name" placeholder="Ajouter un article..." autocomplete="off">
+    <input type="text" class="form-control rounded-0" name="name" placeholder="Ajouter un item..." autocomplete="off">
   </div>
 </div>
 
@@ -32,11 +32,11 @@
 
 @section('js')
 <script src="{{ asset('js/lappdlavi.js') }}"></script>
-<script src="{{ asset('js/listeCourse.js') }}"></script>
+<script src="{{ asset('js/listes.js') }}"></script>
 <script>
   window.onload = () => {
 
-    var LC = new listeCourse('{{ csrf_token() }}')
+    var LC = new listes('{{ csrf_token() }}')
     var LC_ID = $(location).attr('pathname').split('/')[2]
 
 
@@ -52,9 +52,9 @@
           $('[action="lockList"]').html('<i class="fas fa-lock"></i>')
         }
 
-        $('#listeCourse').html(null)
+        $('#listes').html(null)
         Object.keys(data['articles']).forEach(i => {
-          $('#listeCourse').prepend('<div article="' + data['articles'][i].id + '" action="toggleArticleState" class="isBuyed' + data['articles'][i].is_buyed + '">' + data['articles'][i].name + '</div>')
+          $('#listes').prepend('<div article="' + data['articles'][i].id + '" action="toggleArticleState" class="isBuyed' + data['articles'][i].is_buyed + '">' + data['articles'][i].name + '</div>')
         })
       })
     }
@@ -117,13 +117,13 @@
 @section('css')
 
 <style>
-  #listeCourse {
+  #listes {
     border: 1px solid #bababa;
     border-radius: 5px;
     background: rgb(254, 254, 254);
   }
 
-  #listeCourse div {
+  #listes div {
     border-bottom: 1px solid #bababa;
     cursor: pointer;
     text-align: justify;
@@ -132,11 +132,11 @@
     padding: 8px 16px 8px 16px;
   }
 
-  #listeCourse div:last-child {
+  #listes div:last-child {
     border-bottom: none;
   }
 
-  #listeCourse div:hover {
+  #listes div:hover {
     background: rgb(250, 250, 250);
   }
 
