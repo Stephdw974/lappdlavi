@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 
 class LappdlaviController extends Controller
@@ -27,6 +28,6 @@ class LappdlaviController extends Controller
             Auth::login($u, true);
         }
 
-        return redirect()->view('listes.showHome');
+        return redirect()->route('listes.showHome');
     }
 }
