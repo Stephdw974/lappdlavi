@@ -4,6 +4,10 @@ Auth::routes();
 Route::redirect('/', '/listes');
 Route::redirect('/home', '/listes');
 Route::redirect('/listeCourse', '/listes');
+Route::redirect('/login', '/pincode');
+
+Route::get('/pincode', 'LappdlaviController@showPincode')->name('pincode.showPincode');
+Route::post('/pincode', 'LappdlaviController@authUser')->name('pincode.authUser');
 
 Route::get('/listes', 'ListeCourseController@showHome')->name('listes.showHome');
 Route::get('/listes/{LC_List}', 'ListeCourseController@showList')->name('listes.showList');
