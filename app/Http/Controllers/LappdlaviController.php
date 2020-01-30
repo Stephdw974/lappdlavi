@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\User;
+use Illuminate\Foundation\Auth;
 
 class LappdlaviController extends Controller
 {
