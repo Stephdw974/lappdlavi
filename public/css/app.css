@@ -72,6 +72,8 @@ body {
   line-height: 1.6;
   color: #f8fafc;
   text-align: left;
+  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  background-size: cover; /* version standardisée */
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
