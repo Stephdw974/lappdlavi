@@ -34,7 +34,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-rb fixed-top border-bottom">
+        <nav class="navbar navbar-expand-md navbar-dark bg-rb fixed-top">
             <div class="container">
                 <a class="navbar-brand" id="appname" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
