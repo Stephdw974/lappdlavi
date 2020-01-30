@@ -6,6 +6,9 @@ Route::redirect('/home', '/listes');
 Route::redirect('/listeCourse', '/listes');
 Route::redirect('/login', '/pincode');
 
+Route::get('/', 'UserController@showhome')->name('user.showHome');
+Route::post('/background', 'UserController@changeBackground')->name('user.changeBackground');
+
 Route::get('/pincode', 'LappdlaviController@showPincode')->name('pincode.showPincode');
 Route::post('/pincode', 'LappdlaviController@authUser')->name('pincode.authUser');
 

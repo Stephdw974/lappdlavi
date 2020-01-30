@@ -44,4 +44,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\LC_List');
     }
+    
+    public function backgrounds()
+    {
+        return $this->hasMany('App\Background');
+    }
 }
