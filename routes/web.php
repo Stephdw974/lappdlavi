@@ -3,6 +3,7 @@ Auth::routes();
 
 Route::redirect('/', '/listes');
 Route::redirect('/home', '/listes');
+Route::redirect('/listeCourse', '/listes');
 
 Route::get('/listes', 'ListeCourseController@showHome')->name('listes.showHome');
 Route::get('/listes/{LC_List}', 'ListeCourseController@showList')->name('listes.showList');
