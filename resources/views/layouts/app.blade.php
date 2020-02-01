@@ -32,7 +32,7 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 
-<body @auth style="background: url('backgrounds/{{ Auth::user()->backgrounds->first()->image ?? '' }}') no-repeat center fixed" @endauth>
+<body @auth style="background: url('../backgrounds/{{ Auth::user()->backgrounds->last()->image ?? '#343a40' }}') no-repeat center fixed" @endauth>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-rb fixed-top">
             <div class="container">

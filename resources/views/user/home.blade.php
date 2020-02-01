@@ -3,22 +3,20 @@
 
 @section('content')
 
-<div class="container text-dark bg-white p-3">
+<div class="container p-3">
 
   <h5>Changer de fond</h5>
   <form class="form" action="{{ route('user.changeBackground') }}" method="POST" enctype="multipart/form-data">
-  @csrf
-    <div class="row">
-      <div class="col-10">
-        <input type="file" name="image" id="image" class="form-control rounded-0" accept="image/png, image/jpeg" style="height:44px;">
-      </div>
-      <div class="col-2">
-        <button type="submit" class="btn btn-primary rounded-0" style="height:44px;">Submit</button>
-      </div>
-    </div>
+    @csrf
+    <input type="file" name="image" id="image" class="form-control rounded-0 w-100" accept="image/png, image/jpeg" style="height:44px;">
+    <button type="submit" class="btn btn-rb rounded-0 w-100">Submit</button>
   </form>
-</div>
 
+  <h5 class="mt-5">Acces rapide</h5>
+  <div class="list-group">
+    <a href="{{ route('listes.showHome') }}" class="list-group-item list-group-item-action">Listes</a>
+  </div>
+</div>
 
 @endsection
 

@@ -1,6 +1,7 @@
 #app {
     margin: 56px 0 56px 0;
 }
+
 .bg-rb {
     background-color: #184c81;
     color: #f8f9fa;
@@ -9,6 +10,7 @@
 .text-rb {
     color: #184c81;
 }
+
 .border-rb {
     border-color: #184c81;
 }
@@ -17,14 +19,17 @@
     background-color: #184c81;
     color: #f8f9fa;
 }
+
 .btn-rb:hover {
     background-color: #123b64;
     color: #f8f9fa;
 }
+
 .btn-rb.active {
     background-color: #123b64;
     color: #f8f9fa;
 }
+
 .btn-outline-rb {
     color: #184c81;
     border-color: #184c81;
@@ -34,4 +39,13 @@
     color: #f8f9fa;
     background-color: #184c81;
     border-color: #184c81;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-shadow: 0px 0px 1px #000000 !important;
 }

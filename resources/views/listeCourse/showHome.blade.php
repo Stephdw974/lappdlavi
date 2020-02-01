@@ -5,14 +5,13 @@
 
 <div class="container mb-3">
   <div class="btn-group">
-    <a href="#" action="goBack" class="btn btn-dark">
+    <a href="#" action="goBack" class="btn btn-dark border-secondary">
       <i class="fas fa-angle-double-left mr-2"></i> Retour
     </a>
   </div>
   <div class="btn-group float-right">
-    <a href="#" id="Height" class="btn btn-dark"></a>
-    <a href="#" action="showPublicList" class="btn btn-dark"><i class="fas fa-users"></i></a>
-    <a href="#" action="showPrivateList" class="btn btn-dark"><i class="fas fa-user"></i></a>
+    <a href="#" action="showPublicList" class="btn btn-dark border-secondary"><i class="fas fa-users"></i></a>
+    <a href="#" action="showPrivateList" class="btn btn-dark border-secondary"><i class="fas fa-user"></i></a>
   </div>
 </div>
 

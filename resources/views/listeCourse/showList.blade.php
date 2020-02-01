@@ -5,14 +5,14 @@
 
 <div class="container mb-3">
   <div class="btn-group">
-    <a href="#" action="goBack" class="btn btn-dark">
+    <a href="#" action="goBack" class="btn btn-dark border-secondary">
       <i class="fas fa-angle-double-left mr-2"></i> Retour
     </a>
   </div>
   <div class="btn-group float-right">
-    <a href="#" action="deleteList" class="btn btn-dark"><i class="fas fa-trash"></i></a>
-    <a href="#" action="editList" class="btn btn-dark"><i class="fas fa-pen"></i></a>
-    <a href="#" action="lockList" class="btn btn-dark"><i class="fas fa-lock"></i></a>
+    <a href="#" data-toggle="modal" data-target="#deleteList" class="btn btn-dark border-secondary"><i class="fas fa-trash"></i></a>
+    <a href="#" action="editList" class="btn btn-dark border-secondary"><i class="fas fa-pen"></i></a>
+    <a href="#" action="lockList" class="btn btn-dark border-secondary"><i class="fas fa-lock"></i></a>
   </div>
 </div>
 <div class="container">
@@ -27,6 +27,19 @@
   </div>
 </div>
 
+
+<div class="modal fade" id="deleteList" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content p-3 text-dark text-center">
+      <b>Es-tu sûr(e) de vouloir supprimer cette liste ?</b>
+      <hr>
+      <div class="btn-group">
+        <button action="deleteList" class="btn btn-danger w-100">Oui</button>
+        <button onclick="$('#deleteList').modal('hide')" class="btn btn-dark w-100">Non</button>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
 
 

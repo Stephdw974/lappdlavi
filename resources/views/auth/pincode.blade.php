@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="container bg-light text-dark p-4 text-center text-sm-left h-100">
+<div class="container p-4 text-center text-sm-left h-100">
 <h1 class="mt-5 pt-5">CODE PIN</h1>
 
 <form action="{{ route('pincode.authUser') }} " method="post">
