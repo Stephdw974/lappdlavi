@@ -22,17 +22,13 @@
     <link rel="apple-touch-icon" sizes="144x144" href="images/icons/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="images/icons/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="images/icons/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="images/icons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="images/icons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 </head>
 
-<body @auth style="background: url('../backgrounds/{{ Auth::user()->backgrounds->last()->image ?? '#343a40' }}') no-repeat center fixed" @endauth>
+<body @auth style="background: url('{{ asset('backgrounds/'.Auth::user()->backgrounds->last()->image) }}') no-repeat center fixed; background-size: cover;" @endauth>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-rb fixed-top">
             <div class="container">

@@ -5,6 +5,13 @@
 
 <div class="container p-3">
 
+  @if ($errors->any())
+  <div class="alert alert-danger">
+    <b>Erreur !</b><br>
+    @foreach ($errors->all() as $error) {{ $error }}<br> @endforeach
+  </div>
+  @endif
+
   <h5>Changer de fond</h5>
   <form class="form" action="{{ route('user.changeBackground') }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -15,6 +22,7 @@
   <h5 class="mt-5">Acces rapide</h5>
   <div class="list-group">
     <a href="{{ route('listes.showHome') }}" class="list-group-item list-group-item-action">Listes</a>
+    <a href="{{ route('tricount.showHome') }}" class="list-group-item list-group-item-action">Tricount</a>
   </div>
 </div>
 

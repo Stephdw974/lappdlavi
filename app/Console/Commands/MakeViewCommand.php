@@ -25,6 +25,19 @@ class MakeViewCommand extends Command
 
 @section('content')
 
+<div class=\"container mb-3\">
+  <div class=\"btn-group\">
+    <a href=\"#\" action=\"goBack\" class=\"btn btn-dark border-secondary\">
+      <i class=\"fas fa-angle-double-left mr-2\"></i> Retour
+    </a>
+  </div>
+</div>
+
+<div class=\"container px-3\">
+  <div class=\"bg-light p-3 text-dark rounded border\">
+  </div>
+</div>
+
 @endsection
 
 

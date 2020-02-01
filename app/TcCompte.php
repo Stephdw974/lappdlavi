@@ -6,9 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class TcCompte extends Model
 {
-    
-    public function partages() {
-        return $this->hasMany('App\Partage');
+    protected $fillable = ['user_id', 'name', 'members'];
+
+    public function partages()
+    {
+        return $this->hasMany('App\TcPartage');
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

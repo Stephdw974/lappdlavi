@@ -25,3 +25,12 @@ Route::post('/listes/list/togglePrivacy/{LC_List}', 'ListeCourseController@toggl
 Route::post('/listes/list/{LC_List}/createArticle', 'ListeCourseController@createArticle')->name('listes.createArticle');
 Route::post('/listes/article/delete/{LC_Article}', 'ListeCourseController@deleteArticle')->name('listes.deleteArticle');
 Route::post('/listes/article/toggleState/{LC_Article}', 'ListeCourseController@toggleArticleState')->name('listes.toggleArticleState');
+
+
+Route::get('/tricount', 'TricountController@showHome')->name('tricount.showHome');
+Route::get('/tricount/new', 'TricountController@showCompteCreation')->name('tricount.showCompteCreation');
+Route::get('/tricount/{TcCompte}', 'TricountController@showCompte')->name('tricount.showCompte');
+Route::get('/tricount/{TcCompte}/new', 'TricountController@showPartageCreation')->name('tricount.showPartageCreation');
+Route::get('/tricount/{TcCompte}/{TcPartage}', 'TricountController@showPartage')->name('tricount.showPartage');
+Route::post('/tricount', 'TricountController@createCompte')->name('tricount.createCompte');
+Route::post('/tricount/{TcCompte}', 'TricountController@createPartage')->name('tricount.createPartage');

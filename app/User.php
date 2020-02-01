@@ -40,6 +40,12 @@ class User extends Authenticatable
 
 
     
+    public function comptes()
+    {
+        return $this->hasMany('App\TcCompte');
+    }
+    
+    
     public function listes()
     {
         return $this->hasMany('App\LC_List');

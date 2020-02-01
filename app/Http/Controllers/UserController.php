@@ -20,7 +20,7 @@ class UserController extends Controller
 
     public function changeBackground(Request $request){
             $data = $request->validate([
-                'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:40960'],
+                'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
             ]);
     
             $data['image'] = (String) Str::uuid() . '.' . $request->image->getClientOriginalExtension();
