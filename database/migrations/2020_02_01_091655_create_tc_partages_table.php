@@ -15,7 +15,7 @@ class CreateTcPartagesTable extends Migration
     {
         Schema::create('tc_partages', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('tc_comptes_id');
+            $table->integer('tc_compte_id');
             $table->string('name');
             $table->float('amount');
             $table->string('payedBy');

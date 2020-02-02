@@ -3,6 +3,7 @@
 
 @section('content')
 
+
 <div class="container mb-3">
   <div class="btn-group">
     <a href="#" action="goBack" class="btn btn-dark border-secondary">
@@ -11,18 +12,23 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container px-3">
+  <div class="bg-light p-3 text-dark rounded border text-center">
+    <h1>{{$TcPartage->name}} - {{ $TcPartage->amount }}€</h1>
+    <hr>
 
-  <div class="list-group">
-    @foreach($TcCompte->partages as $partage)
-    <a href="{{ route('tricount.showPartage', $partage->id) }}" class="list-group-item list-group-item-action">{{ $partage->name }}</a>
+    <div class="my-5">
+      <h3 class="mb-0">Payé par</h3>
+      {{ $TcPartage->payedBy }}
+    </div>
+
+    <div class="my-5">
+    <h3 class="mb-0">Payé pour</h3>
+    @foreach(explode(',', str_replace(', ', ',', $TcPartage->payedFor)) as $payedFor)
+    {{ $payedFor }}@if(!$loop->last), @endif
     @endforeach
+    </div>
   </div>
-
-</div>
-
-<div class="fixed-bottom text-center">
-  <a href="{{ route('tricount.showPartageCreation', $TcCompte->id) }}" class="btn btn-rb border-secondary mb-3"><i class="fas fa-plus fa-2x"></i></a>
 </div>
 
 @endsection

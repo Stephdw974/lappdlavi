@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\TcCompte;
+use App\TcPartage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +18,7 @@ class TricountController extends Controller
 
     public function showCompte(TcCompte $TcCompte)
     {
+        // dd($TcCompte->partages()->get());
         return view('tricount.showCompte', compact('TcCompte'));
     }
 
@@ -33,9 +35,15 @@ class TricountController extends Controller
     }
 
 
-    public function showPartage()
+    public function showPartage(TcCompte $TcCompte, TcPartage $TcPartage)
     {
-        return view('tricount.showPartage');
+        return view('tricount.showPartage', compact('TcCompte', 'TcPartage'));
+    }
+
+    public function deleteCompte(TcCompte $TcCompte)
+    {
+        $TcCompte->delete();
+        return redirect()->route('tricount.showHome');
     }
 
     public function createCompte(Request $request)
@@ -62,9 +70,22 @@ class TricountController extends Controller
             'payedFor' => ['required'],
         ]);
 
-        $u = Auth::user();
-        $u->comptes()->create($data);
+        $TcCompte->partages()->create($data);
 
-        return redirect()->route('tricount.showHome');
+        return redirect()->route('tricount.showCompte', $TcCompte->id);
+    }
+
+    public function showStats(TcCompte $TcCompte)
+    {
+        $stats = [
+            ['Stephane' => ['Payed' => 0, 'Owed' => 0]],
+            ['Elise' => ['Payed' => 0, 'Owed' => 0]],
+        ];
+
+        foreach(explode(',', str_replace(', ', ',', $TcCompte->members)) as $member) {
+            // $stats
+        }
+
+        dd($stats);
     }
 }

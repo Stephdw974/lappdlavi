@@ -1,8 +1,7 @@
 <?php
 Auth::routes();
 
-Route::redirect('/', '/listes');
-Route::redirect('/home', '/listes');
+Route::redirect('/home', '/');
 Route::redirect('/listeCourse', '/listes');
 Route::redirect('/login', '/pincode');
 
@@ -30,7 +29,9 @@ Route::post('/listes/article/toggleState/{LC_Article}', 'ListeCourseController@t
 Route::get('/tricount', 'TricountController@showHome')->name('tricount.showHome');
 Route::get('/tricount/new', 'TricountController@showCompteCreation')->name('tricount.showCompteCreation');
 Route::get('/tricount/{TcCompte}', 'TricountController@showCompte')->name('tricount.showCompte');
+Route::get('/tricount/{TcCompte}/stats', 'TricountController@showStats')->name('tricount.showStats');
 Route::get('/tricount/{TcCompte}/new', 'TricountController@showPartageCreation')->name('tricount.showPartageCreation');
 Route::get('/tricount/{TcCompte}/{TcPartage}', 'TricountController@showPartage')->name('tricount.showPartage');
 Route::post('/tricount', 'TricountController@createCompte')->name('tricount.createCompte');
 Route::post('/tricount/{TcCompte}', 'TricountController@createPartage')->name('tricount.createPartage');
+Route::delete('/tricount/{TcCompte}', 'TricountController@deleteCompte')->name('tricount.deleteCompte');

@@ -48,7 +48,7 @@
         <label>Payé pour</label>
         @foreach(explode(',', str_replace(', ', ',', $TcCompte->members)) as $member)
         <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="payedFor_{{ $member }}">
+          <input type="checkbox" class="custom-control-input" id="payedFor_{{ $member }}" checked value="{{ $member }}">
           <label class="custom-control-label" for="payedFor_{{ $member }}">{{ $member }}</label>
         </div>
         @endforeach
