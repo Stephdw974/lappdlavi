@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="container px-3">
-<div class="bg-light p-3 text-dark rounded border text-center">
+  <div class="bg-light p-3 text-dark rounded border text-center">
 
     <h2>Acces rapide</h2>
     <div class="list-group">
@@ -14,11 +14,11 @@
 
     <button onClick="$('#logout').submit()" class="btn btn-rb btn-block mt-3">Se déconnecter</button>
     <form id="logout" action="{{ route('logout') }}" method="post" class="d-none">
-    @csrf
+      @csrf
     </form>
-</div>
+  </div>
 
-<div class="bg-light p-3 text-dark rounded border text-center mt-4">
+  <div class="bg-light p-3 text-dark rounded border text-center mt-4">
     @if ($errors->any())
     <div class="alert alert-danger">
       <b>Erreur !</b><br>
@@ -27,12 +27,12 @@
     @endif
 
 
-    <h2 class="mb-3">Parametres</h2> 
+    <h2 class="mb-3">Parametres</h2>
 
     <h5>Changer le code de sécurité</h5>
     <form class="form" action="{{ route('user.changePincode') }}" method="POST">
       @csrf
-      <input type="tel" value="{{ Auth::user()->settings->first()->pinCode ?? '0000'}}" name="pinCode" id="pinCode" class="form-control rounded-0 w-100"style="height:44px;">
+      <input type="tel" value="{{ Auth::user()->settings->first()->pinCode ?? '0000'}}" name="pinCode" id="pinCode" class="form-control rounded-0 w-100" style="height:44px;">
       <button type="submit" class="btn btn-rb rounded-0 w-100">Submit</button>
     </form>
 
@@ -45,9 +45,9 @@
     </form>
 
     <h5 class="mt-4">Changer la couleur principale</h5>
-    <form class="form" action="{{ route('user.changeColor') }}"  value="{{ Auth::user()->settings->first()->mainColor ?? '#000' }}" method="POST">
+    <form class="form" action="{{ route('user.changeColor') }}" method="POST">
       @csrf
-      <input type="color" name="mainColor" id="mainColor" class="form-control rounded-0 w-100"style="height:44px;">
+      <input type="color" name="mainColor" id="mainColor" value="{{ Auth::user()->settings->first()->mainColor ?? '#000' }}" class="form-control rounded-0 w-100" style="height:44px;">
       <button type="submit" class="btn btn-rb rounded-0 w-100">Submit</button>
     </form>
 
