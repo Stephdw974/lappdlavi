@@ -34,7 +34,7 @@ $('#pincode').on('keyup', function() {
       if(data.name) {
         $('#callback').html('<div class="alert alert-success">Authentification réussie '+ data.name+'.<br>Redirection en cours...</div>')
         setTimeout( () => {
-          window.location.href ='/listes'
+          window.location.href ='/'
         }, 500)
 
       }
