@@ -10,6 +10,7 @@
     <div class="list-group">
       <a href="{{ route('listes.showHome') }}" class="list-group-item list-group-item-action">Listes</a>
       <a href="{{ route('tricount.showHome') }}" class="list-group-item list-group-item-action">Tricount (En développement)</a>
+      <a href="{{ route('user.showDebug') }}" class="list-group-item list-group-item-action">Debugger</a>
     </div>
 
     <button onClick="$('#logout').submit()" class="btn btn-rb btn-block mt-3">Se déconnecter</button>
@@ -26,32 +27,33 @@
     </div>
     @endif
 
-
-    <h2 class="mb-3">Parametres</h2>
-
-    <h5>Changer le code de sécurité</h5>
-    <form class="form" action="{{ route('user.changePincode') }}" method="POST">
-      @csrf
-      <input type="tel" value="{{ Auth::user()->settings->first()->pinCode ?? '0000'}}" name="pinCode" id="pinCode" class="form-control rounded-0 w-100" style="height:44px;">
-      <button type="submit" class="btn btn-rb rounded-0 w-100">Submit</button>
-    </form>
-
-
-    <h5 class="mt-4">Changer de fond</h5>
-    <form class="form" action="{{ route('user.changeBackground') }}" method="POST" enctype="multipart/form-data">
-      @csrf
-      <input type="file" name="backgroundImage" id="backgroundImage" class="form-control rounded-0 w-100" accept="image/png, image/jpeg" style="height:44px;">
-      <button type="submit" class="btn btn-rb rounded-0 w-100">Modifier</button>
-    </form>
-
-    <h5 class="mt-4">Changer la couleur principale</h5>
-    <form class="form" action="{{ route('user.changeColor') }}" method="POST">
-      @csrf
-      <input type="color" name="mainColor" id="mainColor" value="{{ Auth::user()->settings->first()->mainColor ?? '#000' }}" class="form-control rounded-0 w-100" style="height:44px;">
-      <button type="submit" class="btn btn-rb rounded-0 w-100">Submit</button>
-    </form>
+    <div id="settingsTitle" onClick="$('#settings').slideToggle()">
+      <h2 class="mb-3">Parametres</h2>
+      <small>Click to toggle</small>
+    </div>
+    <div id="settings" style="display: none">
+      <h5>Changer le code de sécurité</h5>
+      <form class="form" action="{{ route('user.changePincode') }}" method="POST">
+        @csrf
+        <input type="tel" value="{{ Auth::user()->settings->first()->pinCode ?? '0000'}}" name="pinCode" id="pinCode" class="form-control rounded-0 w-100" style="height:44px;">
+        <button type="submit" class="btn btn-rb rounded-0 w-100">Submit</button>
+      </form>
 
 
+      <h5 class="mt-4">Changer de fond</h5>
+      <form class="form" action="{{ route('user.changeBackground') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="backgroundImage" id="backgroundImage" class="form-control rounded-0 w-100" accept="image/png, image/jpeg" style="height:44px;">
+        <button type="submit" class="btn btn-rb rounded-0 w-100">Modifier</button>
+      </form>
+
+      <h5 class="mt-4">Changer la couleur principale</h5>
+      <form class="form" action="{{ route('user.changeColor') }}" method="POST">
+        @csrf
+        <input type="color" name="mainColor" id="mainColor" value="{{ Auth::user()->settings->first()->mainColor ?? '#000' }}" class="form-control rounded-0 w-100" style="height:44px;">
+        <button type="submit" class="btn btn-rb rounded-0 w-100">Submit</button>
+      </form>
+    </div>
   </div>
 </div>
 

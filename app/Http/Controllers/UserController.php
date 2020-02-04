@@ -19,6 +19,11 @@ class UserController extends Controller
         return view('user.home');
     }
 
+
+    public function showDebug() {
+        return view('user.debug');
+    }
+
     public function changeBackground(Request $request){
         $user = Auth::user();
         $userSettings = Setting::firstOrCreate(['user_id' => $user->id]);

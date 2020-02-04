@@ -5,6 +5,7 @@ Route::redirect('/home', '/');
 Route::redirect('/listeCourse', '/listes');
 
 Route::get('/', 'UserController@showhome')->name('user.showHome');
+Route::get('/debug', 'UserController@showDebug')->name('user.showDebug');
 Route::post('/settings/background', 'UserController@changeBackground')->name('user.changeBackground');
 Route::post('/settings/color', 'UserController@changeColor')->name('user.changeColor');
 Route::post('/settings/pincode', 'UserController@changePincode')->name('user.changePincode');
