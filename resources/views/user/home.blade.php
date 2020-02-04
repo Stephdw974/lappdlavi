@@ -39,7 +39,7 @@
       <form class="form" action="{{ route('user.changePincode') }}" method="POST">
         @csrf
         <div class="input-group mb-3">
-          <input type="tel" value="{{ Auth::user()->settings->first()->pinCode ?? '0000'}}" name="pinCode" id="pinCode" class="form-control rounded-0 w-100">
+          <input type="number" value="{{ Auth::user()->settings->first()->pinCode ?? '0000'}}" name="pinCode" id="pinCode" class="form-control hidden-nunmber rounded-0 w-100">
           <div class="input-group-append">
             <button type="submit" class="btn btn-rb rounded-0 w-100">Valider</button>
           </div>

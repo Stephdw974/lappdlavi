@@ -42,3 +42,7 @@
     background-color: var(--mainColor);
     border-color: var(--mainColor);
 }
+
+.hidden-nunmber {
+    -webkit-text-security: disc;
+}
