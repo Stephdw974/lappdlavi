@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="container p-4 text-center text-sm-left h-100">
-<h1 class="mt-5 pt-5">CODE PIN</h1>
+<h1 class="mt-5 pt-5 text-light">CODE PIN</h1>
 <div id="callback"></div>
 
 <form action="{{ route('pincode.authUser') }} " method="post">
