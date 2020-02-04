@@ -32,7 +32,7 @@
     <h5>Changer le code de sécurité</h5>
     <form class="form" action="{{ route('user.changePincode') }}" method="POST">
       @csrf
-      <input type="tel" value="{{ strval(Auth::user()->settings->first()->pinCode) }}" name="pinCode" id="pinCode" class="form-control rounded-0 w-100"style="height:44px;">
+      <input type="tel" value="{{ Auth::user()->settings->first()->pinCode ?? '0000'}}" name="pinCode" id="pinCode" class="form-control rounded-0 w-100"style="height:44px;">
       <button type="submit" class="btn btn-rb rounded-0 w-100">Submit</button>
     </form>
 
@@ -45,7 +45,7 @@
     </form>
 
     <h5 class="mt-4">Changer la couleur principale</h5>
-    <form class="form" action="{{ route('user.changeColor') }}"  value="{{ strval(Auth::user()->settings->first()->mainColor) }}" method="POST">
+    <form class="form" action="{{ route('user.changeColor') }}"  value="{{ Auth::user()->settings->first()->mainColor ?? '#000' }}" method="POST">
       @csrf
       <input type="color" name="mainColor" id="mainColor" class="form-control rounded-0 w-100"style="height:44px;">
       <button type="submit" class="btn btn-rb rounded-0 w-100">Submit</button>
