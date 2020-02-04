@@ -9,14 +9,20 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
-    :root { 
-        --mainColor : @auth {{ Auth::user()->settings->last()->mainColor ?? '#212529' }} @else '#123b64' @endauth;
-    }
+        :root {
+            --mainColor : @auth {
+                    {
+                    Auth: :user()->settings->last()->mainColor ?? '#212529'
+                }
+            }
+
+            @else '#123b64'@endauth;
+        }
     </style>
-@laravelPWA
 
     <link href="{{ asset('css/reboot.css') }}" rel="stylesheet">
     @yield('css')
+    @laravelPWA
 
 
     <!-- <link rel="apple-touch-icon" sizes="57x57" href="images/icons/apple-icon-57x57.png">
@@ -34,7 +40,7 @@
     <meta name="theme-color" content="#ffffff"> -->
 </head>
 
-<body style="background: @auth url('backgrounds/{{ Auth::user()->settings->last()->backgroundImage ?? 'dark_gray.png' }}') @else url(backgrounds/dark_gray.png) @endauth no-repeat center fixed; background-size: cover;" >
+<body style="background: @auth url('backgrounds/{{ Auth::user()->settings->last()->backgroundImage ?? 'dark_gray.png' }}') @else url(backgrounds/dark_gray.png) @endauth no-repeat center fixed; background-size: cover;">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-rb fixed-top">
             <div class="container">
