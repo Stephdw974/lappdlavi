@@ -1,8 +1,5 @@
 <?php
 
-
-use Illuminate\Support\Facades\Auth;
-
 return [
     'name' => 'LappDlavi',
     'manifest' => [

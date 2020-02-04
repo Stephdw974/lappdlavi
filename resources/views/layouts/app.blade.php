@@ -13,11 +13,12 @@
         --mainColor : @auth {{ Auth::user()->settings->last()->mainColor ?? '#212529' }} @else '#123b64' @endauth;
     }
     </style>
+@laravelPWA
 
     <link href="{{ asset('css/reboot.css') }}" rel="stylesheet">
     @yield('css')
-    
-    @laravelPWA
+
+
     <!-- <link rel="apple-touch-icon" sizes="57x57" href="images/icons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="images/icons/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/icons/apple-icon-72x72.png">
