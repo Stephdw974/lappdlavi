@@ -27,14 +27,12 @@
     </div>
     @endif
 
-    <div id="settingsTitle" onClick="$('#settings').slideToggle()">
-      <h2 class="mb-3">Parametres</h2>
+    <div id="settingsTitle" onClick="$('#settings').slideToggle();">
+      <h2 class="mb-0">Parametres</h2>
       <small>Click to toggle</small>
     </div>
     <div id="settings" style="display: none">
-
-
-
+    <hr>
       <h5>Changer le code de sécurité</h5>
       <form class="form" action="{{ route('user.changePincode') }}" method="POST">
         @csrf

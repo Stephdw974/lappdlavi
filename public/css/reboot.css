@@ -46,3 +46,18 @@
 .hidden-nunmber {
     -webkit-text-security: disc;
 }
+
+nav.navbar {
+    height: 42px;
+    padding: 0;
+}
+
+.navbar-brand {
+    font-weight: 100;
+    padding: 0;
+    line-height: 44px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}

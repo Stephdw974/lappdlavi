@@ -10,7 +10,7 @@
 
     <style>
     :root { 
-        --mainColor : @auth {{ Auth: :user()->settings->last()->mainColor ?? '#212529' }} @else '#123b64' @endauth;
+        --mainColor : @auth {{ Auth::user()->settings->last()->mainColor ?? '#212529' }} @else '#123b64' @endauth;
     }
     </style>
 
@@ -21,33 +21,10 @@
 
 <body style="background: @auth url('backgrounds/{{ Auth::user()->settings->last()->backgroundImage ?? 'dark_gray.png' }}') @else url(backgrounds/dark_gray.png) @endauth no-repeat center fixed; background-size: cover;">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-rb fixed-top">
-            <div class="container">
-                <a class="navbar-brand" id="appname" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
-                <button name="navbar-toggler" aria-label="Ouvrir_Le_Menu" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                        @endif
-                        @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{ Auth::user()->name }}</a>
-                        </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
+        <nav class="navbar navbar-dark bg-rb fixed-top">
+            <span class="navbar-brand" id="appname" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</span>
         </nav>
-        <main class="py-3">
+        <main>
             @yield('content')
         </main>
     </div>
