@@ -62,7 +62,7 @@ class ListeCourseController extends Controller
      */
     public function getPrivateLists()
     {
-        return json_encode(LC_List::where('is_private', 1)->get());
+        return json_encode(LC_List::where([['is_private', 1], ['user_id', Auth::id()]])->get());
     }
 
 
