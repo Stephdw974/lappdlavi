@@ -10,7 +10,7 @@
 
     <style>
     :root { 
-        --mainColor : @auth {{ Auth::user()->settings->last()->mainColor ?? '#212529' }} @else '#212529' @endauth;
+        --mainColor : @auth {{ Auth::user()->settings->last()->mainColor ?? '#212529' }} @else '#123b64' @endauth;
     }
     </style>
 
