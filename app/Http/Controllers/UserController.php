@@ -24,7 +24,7 @@ class UserController extends Controller
         $userSettings = Setting::firstOrCreate(['user_id' => $user->id]);
 
         $data = $request->validate([
-            'backgroundImage' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
+            'backgroundImage' => ['required', 'image', 'max:128000', 'mimes:jpeg,png,jpg,gif,svg'],
         ]);
 
         $data['backgroundImage'] = (String) Str::uuid() . '.' . $request->backgroundImage->getClientOriginalExtension();

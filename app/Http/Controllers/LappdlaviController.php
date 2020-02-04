@@ -9,17 +9,18 @@ use Illuminate\Support\Facades\Auth;
 
 class LappdlaviController extends Controller
 {
-    public function showPincode() {
-if(Auth::user()){
-    return redirect()->route('user.showHome');
-    
-}else {
+    public function showPincode()
+    {
+        if (Auth::user()) {
+            return redirect()->route('user.showHome');
+        } else {
 
-        return view('auth.pincode');
+            return view('auth.pincode');
+        }
     }
-    }
-    
-    public function authUser(Request $request) {
+
+    public function authUser(Request $request)
+    {
 
         $data = $request->validate([
             'pincode' => ['min:4', 'max:4']
@@ -27,13 +28,12 @@ if(Auth::user()){
 
         $pincode = $data['pincode'];
 
-        if($settings = Setting::where('pinCode', $pincode)->first()) {
-            if($user = $settings->user) {
+        if ($settings = Setting::where('pinCode', $pincode)->first()) {
+            if ($user = $settings->user) {
                 Auth::login($user);
                 return $user;
             }
-
         }
-        return redirect()->route('listes.showHome');
+        return redirect()->route('user.showHome');
     }
 }
