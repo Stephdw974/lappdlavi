@@ -32,26 +32,41 @@
       <small>Click to toggle</small>
     </div>
     <div id="settings" style="display: none">
+
+
+
       <h5>Changer le code de sécurité</h5>
       <form class="form" action="{{ route('user.changePincode') }}" method="POST">
         @csrf
-        <input type="tel" value="{{ Auth::user()->settings->first()->pinCode ?? '0000'}}" name="pinCode" id="pinCode" class="form-control rounded-0 w-100" style="height:44px;">
-        <button type="submit" class="btn btn-rb rounded-0 w-100">Submit</button>
+        <div class="input-group mb-3">
+          <input type="tel" value="{{ Auth::user()->settings->first()->pinCode ?? '0000'}}" name="pinCode" id="pinCode" class="form-control rounded-0 w-100">
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-rb rounded-0 w-100">Valider</button>
+          </div>
+        </div>
       </form>
 
 
       <h5 class="mt-4">Changer de fond</h5>
       <form class="form" action="{{ route('user.changeBackground') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="file" name="backgroundImage" id="backgroundImage" class="form-control rounded-0 w-100" accept="image/png, image/jpeg" style="height:44px;">
-        <button type="submit" class="btn btn-rb rounded-0 w-100">Modifier</button>
+        <div class="input-group mb-3">
+          <input type="file" name="backgroundImage" id="backgroundImage" class="form-control rounded-0 w-100" accept="image/png, image/jpeg">
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-rb rounded-0 w-100">Valider</button>
+          </div>
+        </div>
       </form>
 
       <h5 class="mt-4">Changer la couleur principale</h5>
       <form class="form" action="{{ route('user.changeColor') }}" method="POST">
         @csrf
-        <input type="color" name="mainColor" id="mainColor" value="{{ Auth::user()->settings->first()->mainColor ?? '#000' }}" class="form-control rounded-0 w-100" style="height:44px;">
-        <button type="submit" class="btn btn-rb rounded-0 w-100">Submit</button>
+        <div class="input-group mb-3">
+          <input type="color" name="mainColor" id="mainColor" value="{{ Auth::user()->settings->first()->mainColor ?? '#000' }}" class="form-control rounded-0 w-100">
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-rb rounded-0 w-100">Valider</button>
+          </div>
+        </div>
       </form>
     </div>
   </div>
