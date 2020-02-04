@@ -13,8 +13,8 @@
     </div>
 
     <button onClick="$('#logout').submit()" class="btn btn-rb btn-block mt-3">Se déconnecter</button>
-    <form action="{{ route('logout') }}" method="post" class="d-none">
-      @
+    <form id="logout" action="{{ route('logout') }}" method="post" class="d-none">
+    @csrf
     </form>
 </div>
 
