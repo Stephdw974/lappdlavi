@@ -19,7 +19,7 @@
     @laravelPWA
 </head>
 
-<body style="background: @auth url('backgrounds/{{ Auth::user()->settings->last()->backgroundImage ?? 'dark_gray.png' }}') @else url(backgrounds/dark_gray.png) @endauth no-repeat center fixed; background-size: cover;">
+<body style="background: @auth url('{{ url('/') }}/backgrounds/{{ Auth::user()->settings->last()->backgroundImage ?? 'dark_gray.png' }}') @else url(backgrounds/dark_gray.png) @endauth no-repeat center fixed; background-size: cover;">
     <div id="app">
         <nav class="navbar navbar-dark bg-rb fixed-top">
             <span class="navbar-brand" id="appname" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</span>
