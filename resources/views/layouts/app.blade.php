@@ -9,15 +9,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
-        :root {
-            --mainColor : @auth {
-                    {
-                    Auth: :user()->settings->last()->mainColor ?? '#212529'
-                }
-            }
-
-            @else '#123b64'@endauth;
-        }
+    :root { 
+        --mainColor : @auth {{ Auth: :user()->settings->last()->mainColor ?? '#212529' }} @else '#123b64' @endauth;
+    }
     </style>
 
     <link href="{{ asset('css/reboot.css') }}" rel="stylesheet">
