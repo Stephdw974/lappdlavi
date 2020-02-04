@@ -33,8 +33,7 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 
-<!-- <body @auth style="background: url('backgrounds/{{ Auth::user()->settings->last()->backgroundImage ?? 'dark_gray.png' }}') no-repeat center fixed; background-size: cover;" @endauth> -->
-<body style="background: url('backgrounds/dark_gray.png') no-repeat center fixed; background-size: cover;">
+<body @auth style="background: url('backgrounds/{{ Auth::user()->settings->last()->backgroundImage ?? 'dark_gray.png' }}') no-repeat center fixed; background-size: cover;" @endauth>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-rb fixed-top">
             <div class="container">
