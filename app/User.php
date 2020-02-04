@@ -51,8 +51,8 @@ class User extends Authenticatable
         return $this->hasMany('App\LC_List');
     }
     
-    public function backgrounds()
+    public function settings()
     {
-        return $this->hasMany('App\Background');
+        return $this->hasMany('App\Setting');
     }
 }

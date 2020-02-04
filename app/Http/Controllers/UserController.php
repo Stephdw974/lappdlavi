@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Background;
+use App\Setting;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,16 +20,52 @@ class UserController extends Controller
     }
 
     public function changeBackground(Request $request){
-            $data = $request->validate([
-                'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
-            ]);
-    
-            $data['image'] = (String) Str::uuid() . '.' . $request->image->getClientOriginalExtension();
-    
-            $User = Auth::user();
-            $request->image->move(public_path('backgrounds'), $data['image']);
+        $user = Auth::user();
+        $userSettings = Setting::firstOrCreate(['user_id' => $user->id]);
 
-            $User->backgrounds()->create($data);
-            return redirect()->route('user.showHome');
+        $data = $request->validate([
+            'backgroundImage' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
+        ]);
+
+        $data['backgroundImage'] = (String) Str::uuid() . '.' . $request->backgroundImage->getClientOriginalExtension();
+
+        $User = Auth::user();
+        $request->backgroundImage->move(public_path('backgrounds'), $data['backgroundImage']);
+
+        $userSettings->backgroundImage = $data['backgroundImage'];
+        $userSettings->save();
+        
+        return redirect()->route('user.showHome');
     }
+
+
+    public function changeColor(Request $request){
+        $user = Auth::user();
+        $userSettings = Setting::firstOrCreate(['user_id' => $user->id]);
+
+        $data = $request->validate([
+            'mainColor' => ['required'],
+        ]);
+        
+        $userSettings->mainColor = $data['mainColor'];
+        $userSettings->save();
+        
+        return redirect()->route('user.showHome');
+    }
+    
+    public function changePincode(Request $request){
+        $user = Auth::user();
+        $userSettings = Setting::firstOrCreate(['user_id' => $user->id]);
+
+        $data = $request->validate([
+            'pinCode' => ['required'],
+        ]);
+
+        $userSettings->pinCode = $data['pinCode'];
+        $userSettings->save();
+        
+        return redirect()->route('user.showHome');
+    }
+    
 }
+
