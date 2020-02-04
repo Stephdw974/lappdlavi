@@ -52,7 +52,7 @@
         })
       } else if (privacy === 'private') {
         $('#appname').text('Listes personnelles')
-        LC.getUserLists((data) => {
+        LC.getPrivateLists((data) => {
           console.log(data)
           $('#listes').html(null)
           Object.keys(data).forEach(i => {
