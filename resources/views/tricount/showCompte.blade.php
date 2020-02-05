@@ -24,8 +24,7 @@
     @foreach($stats as $stat)
     @if($member == $stat["Name"])
     <div class="my-3">
-      {{ var_dump($stats[0]) }}
-      <!-- {{ $stat["Name"] }} -->
+      {{ $stat["Name"] }}
       <div class="progress " style="height: 25px;">
         <div class="progress-bar mx-auto @if($stat['Owed'] >= 0) bg-success @else bg-danger @endif" role="progressbar" style="width: {{ 50+((($stat['Owed'] / ($TcCompte->partages()->sum('amount')+0.1) )*100)/2) ?? 50}}%" aria-valuenow="{{ 50+((($stat['Owed'] / ($TcCompte->partages()->sum('amount')+0.1) )*100)/2) ?? 50 }}" aria-valuemin="0" aria-valuemax="100">@if($stat['Owed'] > 0)+@endif{{ $stat['Owed'] }} €</div>
       </div>

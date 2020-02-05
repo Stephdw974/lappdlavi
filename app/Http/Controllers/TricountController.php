@@ -110,10 +110,13 @@ class TricountController extends Controller
             }
         }
 
+
         for ($i = 0; $i < count($stats); $i++) {
-            for ($j = 0; $j < count($stats); $j++) {
-                if($stats[$i]['Owed'] < $stats[$j]['Owed']) {
-                    
+            $min = min(array_column($stats, 'Owed'));
+            $max = max(array_column($stats, 'Owed'));
+            if ($min <= $max) {
+                for ($j = 0; $j < count($stats); $j++) {
+                    $stats[$j]['Owed'] -= $min;
                 }
             }
         }
