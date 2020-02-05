@@ -105,7 +105,7 @@ class TricountController extends Controller
                     $memberCount = count(explode(',', str_replace(', ', ',', $partage->payedFor)));
                     if ($stats[$i]['Name'] == $member && $partage->payedBy != $member && in_array($member, explode(',', str_replace(', ', ',', $partage->payedFor))) && $partage->payedBy != $partage->payedFor) {
                         $stats[$i]['Owed'] += $partage->amount / $memberCount;
-                    }
+                    } 
                 }
             }
         }
