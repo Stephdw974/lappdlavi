@@ -137,13 +137,14 @@ class TricountController extends Controller
         foreach (explode(',', str_replace(', ', ',', $TcCompte->members)) as $member) {
             $owed = $TcCompte->partages()->whereRaw('payedFor != payedBy')->where([['payedFor', 'like', '%' . $member . '%']])->get();
 
-            foreach ($owed as $partage) {
-                for ($i = 0; $i < count($stats); $i++) {
+            for ($i = 0; $i < count($stats); $i++) {
+                foreach ($owed as $partage) {
                     if ($stats[$i]['Name'] == $member) {
                         // $stats[$i]['Owed'] =  $stats[$i]['Payed'] - ($statAmount / $memberCount);
-                        $stats[$i]['Owed'] += $partage->amount / count(explode(',', str_replace(', ', ',', $partage->payedFor)));
+                        $stats[$i]['Owed'] += $partage->amount;
                     }
                 }
+                $stats[$i]['Owed'] = $stats[$i]['Owed'] / count(explode(',', str_replace(', ', ',', $partage->payedFor)));
             }
         }
 
