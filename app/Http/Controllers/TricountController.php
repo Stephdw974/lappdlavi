@@ -18,35 +18,7 @@ class TricountController extends Controller
 
     public function showCompte(TcCompte $TcCompte)
     {
-        $stats = [];
-        $memberCount = count(explode(',', str_replace(', ', ',', $TcCompte->members)));
-        $statAmount = $TcCompte->partages()->whereRaw('payedFor != payedBy')->sum('amount');
-        // Initialisation du tableau
-        foreach (explode(',', str_replace(', ', ',', $TcCompte->members)) as $member) {
-            array_push($stats, ["Name" => $member, "Payed" => 0, "Owed" => 0]);
-        }
-
-        // Remplissage du tableau Payed
-        foreach (explode(',', str_replace(', ', ',', $TcCompte->members)) as $member) {
-            $payed = $TcCompte->partages()->whereRaw('payedFor != payedBy')->where([['payedBy', $member], ['payedFor', '!=', $member]])->sum('amount');
-
-            for ($i = 0; $i < count($stats); $i++) {
-                if ($stats[$i]['Name'] == $member) {
-                    $stats[$i]['Payed'] = round($payed, 2, PHP_ROUND_HALF_UP);
-                }
-            }
-        }
-
-        // Remplissage du tableau Owed
-        foreach (explode(',', str_replace(', ', ',', $TcCompte->members)) as $member) {
-            $owed = $TcCompte->partages()->whereRaw('payedFor != payedBy')->where([['payedFor', 'like', '%' . $member . '%']])->sum('amount');
-
-            for ($i = 0; $i < count($stats); $i++) {
-                if ($stats[$i]['Name'] == $member) {
-                    $stats[$i]['Owed'] =  round($stats[$i]['Payed'] - ($statAmount / $memberCount), 2, PHP_ROUND_HALF_UP);
-                }
-            }
-        }
+        $stats = showStats($TcCompte);
 
 
         return view('tricount.showCompte', compact('TcCompte', 'stats'));
