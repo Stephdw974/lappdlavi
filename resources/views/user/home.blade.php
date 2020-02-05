@@ -9,8 +9,8 @@
     <h2>Acces rapide</h2>
     <div class="list-group">
       <a href="{{ route('listes.showHome') }}" class="list-group-item list-group-item-action">Listes</a>
-      <a href="{{ route('tricount.showHome') }}" class="list-group-item list-group-item-action">Tricount (En développement)</a>
-      <a href="{{ route('user.showDebug') }}" class="list-group-item list-group-item-action">Debugger</a>
+      <a href="{{ route('tricount.showHome') }}" class="list-group-item list-group-item-action">Tricount</a>
+      <a href="{{ route('user.showDebug') }}" class="list-group-item list-group-item-action small p-2">Debugger</a>
     </div>
 
     <button onClick="$('#logout').submit()" class="btn btn-rb btn-block mt-3">Se déconnecter</button>

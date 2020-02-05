@@ -15,7 +15,7 @@
   <div class="bg-light p-3 text-dark rounded border">
 
     <h5>Nouveau partage</h5>
-    
+
     @if ($errors->any())
     <div class="alert alert-danger">
       <b>Erreur !</b><br>
@@ -48,7 +48,7 @@
         <label>Payé pour</label>
         @foreach(explode(',', str_replace(', ', ',', $TcCompte->members)) as $member)
         <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="payedFor_{{ $member }}" checked value="{{ $member }}">
+          <input type="checkbox" class="custom-control-input" id="payedFor_{{ $member }}" value="{{ $member }}">
           <label class="custom-control-label" for="payedFor_{{ $member }}">{{ $member }}</label>
         </div>
         @endforeach
@@ -68,16 +68,19 @@
 <script>
   var payedFor = []
 
+
   $('.custom-control-input').on('change', function() {
     if ($(this).is(':checked') && !payedFor.includes($(this).val())) {
       payedFor.push($(this).val())
     } else if (!$(this).is(':checked') && payedFor.includes($(this).val())) {
-      payedFor.splice(payedFor.indexOf($(this).val()))
+      payedFor.splice(payedFor.indexOf($(this).val()), 1)
     }
 
     $('[name="payedFor"]').val(payedFor)
     console.log(payedFor)
   })
+
+  $('[type="checkbox"]').click()
 </script>
 @endsection
 

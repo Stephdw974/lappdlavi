@@ -37,3 +37,4 @@ Route::get('/tricount/{TcCompte}/{TcPartage}', 'TricountController@showPartage')
 Route::post('/tricount', 'TricountController@createCompte')->name('tricount.createCompte');
 Route::post('/tricount/{TcCompte}', 'TricountController@createPartage')->name('tricount.createPartage');
 Route::delete('/tricount/{TcCompte}', 'TricountController@deleteCompte')->name('tricount.deleteCompte');
+Route::delete('/tricount/{TcCompte}/{TcPartage}', 'TricountController@deletePartage')->name('tricount.deletePartage');
