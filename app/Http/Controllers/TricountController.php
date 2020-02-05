@@ -107,7 +107,8 @@ class TricountController extends Controller
 
         // Remplissage du tableau Owed
         foreach (explode(',', str_replace(', ', ',', $TcCompte->members)) as $member) {
-            $owed = $TcCompte->partages()->whereRaw('payedFor != payedBy')->where([['payedFor', 'like', '%' . $member . '%']])->get();
+            // $owed = $TcCompte->partages()->whereRaw('payedFor != payedBy')->where([['payedFor', 'like', '%' . $member . '%']])->get();
+            $owed = $TcCompte->partages()->whereRaw('payedFor != payedBy')->get();
 
             for ($i = 0; $i < count($stats); $i++) {
                 foreach ($owed as $partage) {
