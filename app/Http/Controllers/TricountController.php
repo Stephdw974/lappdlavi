@@ -18,7 +18,7 @@ class TricountController extends Controller
 
     public function showCompte(TcCompte $TcCompte)
     {
-        $stats = showStats($TcCompte);
+        $stats = $this->showStats($TcCompte);
 
 
         return view('tricount.showCompte', compact('TcCompte', 'stats'));
