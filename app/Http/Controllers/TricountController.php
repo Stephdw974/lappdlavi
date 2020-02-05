@@ -111,13 +111,10 @@ class TricountController extends Controller
 
             for ($i = 0; $i < count($stats); $i++) {
                 foreach ($owed as $partage) {
-                    if ($stats[$i]['Name'] == $member) {
-                        if ($partage->payedBy != $member) {
-                            $stats[$i]['Owed'] += ($partage->amount / $memberCount);
-                        }
+                    if ($stats[$i]['Name'] == $member && $partage->payedBy != $member && $partage->payedBy != $partage->payedFor) {
+                        $stats[$i]['Owed'] += $partage->amount / $memberCount;
                     }
                 }
-                // $stats[$i]['Owed'] = $stats[$i]['Owed'] / count(explode(',', str_replace(', ', ',', $partage->payedFor)));
             }
         }
 
