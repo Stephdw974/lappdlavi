@@ -24,7 +24,8 @@
     @foreach($stats as $stat)
     @if($member == $stat["Name"])
     <div class="my-3">
-      {{ $stat["Name"] }}
+      {{ $stats[0] }}
+      <!-- {{ $stat["Name"] }} -->
       <div class="progress " style="height: 25px;">
         <div class="progress-bar mx-auto @if($stat['Owed'] >= 0) bg-success @else bg-danger @endif" role="progressbar" style="width: {{ 50+((($stat['Owed'] / ($TcCompte->partages()->sum('amount')+0.1) )*100)/2) ?? 50}}%" aria-valuenow="{{ 50+((($stat['Owed'] / ($TcCompte->partages()->sum('amount')+0.1) )*100)/2) ?? 50 }}" aria-valuemin="0" aria-valuemax="100">@if($stat['Owed'] > 0)+@endif{{ $stat['Owed'] }} €</div>
       </div>
@@ -53,26 +54,6 @@
   {{ method_field('DELETE') }}
 </form>
 
-<!-- Button trigger modal -->
-
-<!-- Modal -->
-<div class="modal fade" id="showMembers" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Membres du Tricount</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        @foreach(explode(',', str_replace(', ', ',', $TcCompte->members)) as $member)
-        {{ $member }}@if(!$loop->last), @endif
-        @endforeach
-      </div>
-    </div>
-  </div>
-</div>
 @endsection
 
 

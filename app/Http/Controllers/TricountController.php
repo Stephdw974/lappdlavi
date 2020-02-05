@@ -19,8 +19,6 @@ class TricountController extends Controller
     public function showCompte(TcCompte $TcCompte)
     {
         $stats = $this->showStats($TcCompte);
-
-
         return view('tricount.showCompte', compact('TcCompte', 'stats'));
     }
 
@@ -57,15 +55,12 @@ class TricountController extends Controller
 
     public function createCompte(Request $request)
     {
-
         $data = $request->validate([
             'name' => ['required'],
             'members' => ['required']
         ]);
-
         $u = Auth::user();
         $u->comptes()->create($data);
-
         return redirect()->route('tricount.showHome');
     }
 
@@ -78,17 +73,15 @@ class TricountController extends Controller
             'payedBy' => ['required'],
             'payedFor' => ['required'],
         ]);
-
         $TcCompte->partages()->create($data);
-
         return redirect()->route('tricount.showCompte', $TcCompte->id);
     }
 
     public function showStats(TcCompte $TcCompte)
     {
         $stats = [];
-        // $memberCount = count(explode(',', str_replace(', ', ',', $TcCompte->members)));
         $statAmount = $TcCompte->partages()->whereRaw('payedFor != payedBy')->sum('amount');
+
         // Initialisation du tableau
         foreach (explode(',', str_replace(', ', ',', $TcCompte->members)) as $member) {
             array_push($stats, ["Name" => $member, "Payed" => 0, "Owed" => 0]);
@@ -97,7 +90,6 @@ class TricountController extends Controller
         // Remplissage du tableau Payed
         foreach (explode(',', str_replace(', ', ',', $TcCompte->members)) as $member) {
             $payed = $TcCompte->partages()->whereRaw('payedFor != payedBy')->where([['payedBy', $member], ['payedFor', '!=', $member]])->sum('amount');
-
             for ($i = 0; $i < count($stats); $i++) {
                 if ($stats[$i]['Name'] == $member) {
                     $stats[$i]['Payed'] = $payed;
@@ -108,13 +100,20 @@ class TricountController extends Controller
         // Remplissage du tableau Owed
         foreach (explode(',', str_replace(', ', ',', $TcCompte->members)) as $member) {
             $owed = $TcCompte->partages()->whereRaw('payedFor != payedBy')->where([['payedFor', 'like', '%' . $member . '%']])->get();
-
             for ($i = 0; $i < count($stats); $i++) {
                 foreach ($owed as $partage) {
                     $memberCount = count(explode(',', str_replace(', ', ',', $partage->payedFor)));
                     if ($stats[$i]['Name'] == $member && $partage->payedBy != $member && in_array($member, explode(',', str_replace(', ', ',', $partage->payedFor))) && $partage->payedBy != $partage->payedFor) {
                         $stats[$i]['Owed'] += $partage->amount / $memberCount;
                     }
+                }
+            }
+        }
+
+        for ($i = 0; $i < count($stats); $i++) {
+            for ($j = 0; $j < count($stats); $j++) {
+                if($stats[$i]['Owed'] < $stats[$j]['Owed']) {
+                    
                 }
             }
         }
