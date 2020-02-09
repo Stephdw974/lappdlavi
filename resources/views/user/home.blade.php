@@ -14,6 +14,7 @@
     </div>
 
     <button onClick="$('#logout').submit()" class="btn btn-rb btn-block mt-3">Se déconnecter</button>
+    <button onClick="clearCache()" class="btn btn-rb btn-block btn-sm mt-3">Clear cache</button>
     <form id="logout" action="{{ route('logout') }}" method="post" class="d-none">
       @csrf
     </form>
@@ -74,6 +75,13 @@
 
 
 @section('js')
+<script>
+var clearCache = () => {
+  localStorage.clear()
+  sessionStorage.clear()
+  $('#logout').submit()
+}
+</script>
 @endsection
 
 
