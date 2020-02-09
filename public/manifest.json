@@ -3,7 +3,7 @@
   "short_name": "LappDlavi",
   "theme_color": "#184c81",
   "background_color": "#184c81",
-  "display": "fullscreen",
+  "display": "standalone",
   "orientation": "portrait",
   "scope": "/",
   "start_url": "/",
