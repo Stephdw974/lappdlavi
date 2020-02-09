@@ -18,7 +18,8 @@
 <div class="container">
   <b id="deletionMode" class="alert alert-info" style="display:none">Mode suppression activé</b>
 
-  <div class="progress">
+  <div class="progress mb-3">
+  <!-- <div class="progress-bar" role="progressbar" style="width: '+progress+'%;" aria-valuenow="'+progress+'" aria-valuemin="0" aria-valuemax="100"></div> -->
   </div>
   <div id="listes"></div>
 </div>
@@ -65,9 +66,10 @@
           if(data['articles'][i].is_buyed == 1)  checked_val++
         })
 
-        progress = (checked_val/data['articles'].lenght) * 100
-
-        $('progress').append('<div class="progress-bar" role="progressbar" style="width: '+progress+'%;" aria-valuenow="'+progress+'" aria-valuemin="0" aria-valuemax="100"></div>')
+        progress = (checked_val/data['articles'].length) * 100
+        console.log(progress)
+        $('.progress').html(null)
+        $('.progress').append('<div class="progress-bar" role="progressbar" style="width: '+progress+'%;" aria-valuenow="'+progress+'" aria-valuemin="0" aria-valuemax="100">'+checked_val+' / '+data['articles'].length+'</div>')
 
         $('#appname').text(data['list'].name)
         if (data['list'].is_private == 1) {
