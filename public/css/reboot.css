@@ -1,3 +1,5 @@
+@import "/css/fonts.min.css";
+
 #app {
     margin: 56px 0 56px 0;
 }
@@ -22,13 +24,13 @@
 
 .btn-rb:hover {
     /* background-color: #123b64; */
-    filter: contrast(60%)
+    filter: contrast(60%);
     color: #f8f9fa;
 }
 
 .btn-rb.active {
     /* background-color: #123b64; */
-    filter: contrast(60%)
+    filter: contrast(60%);
     color: #f8f9fa;
 }
 
