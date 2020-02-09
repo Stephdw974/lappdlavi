@@ -75,7 +75,7 @@ class ListeCourseController extends Controller
      */
     public function getList(LC_List $LC_List)
     {
-        return json_encode(['list' => $LC_List, 'articles' => $LC_List->articles()->orderBy('updated_at')->get()]);
+        return json_encode(['list' => $LC_List, 'articles' => $LC_List->articles()->orderBy('updated_at')->orderBy('is_buyed')->get()]);
     }
 
 

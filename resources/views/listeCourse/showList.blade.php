@@ -16,9 +16,11 @@
   </div>
 </div>
 <div class="container">
-  <b id="deletionMode" style="display:none">Mode suppression activé</b>
-  <div id="listes"></div>
+  <b id="deletionMode" class="alert alert-info" style="display:none">Mode suppression activé</b>
 
+  <div class="progress">
+  </div>
+  <div id="listes"></div>
 </div>
 
 <div class="fixed-bottom py-2 bg-rb">
@@ -57,6 +59,15 @@
       LC.getList(LC_ID, (data) => {
         console.log(data)
 
+        checked_val = 0
+
+        Object.keys(data['articles']).forEach(i => {
+          if(data['articles'][i].is_buyed == 1)  checked_val++
+        })
+
+        progress = (checked_val/data['articles'].lenght) * 100
+
+        $('progress').append('<div class="progress-bar" role="progressbar" style="width: '+progress+'%;" aria-valuenow="'+progress+'" aria-valuemin="0" aria-valuemax="100"></div>')
 
         $('#appname').text(data['list'].name)
         if (data['list'].is_private == 1) {
